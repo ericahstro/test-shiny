@@ -24,6 +24,20 @@ ui <- pageWithSidebar(
                 max = 500),
     br(),
     
+    
+    sliderInput("mu", 
+                "moyenne:", 
+                value = 0,
+                min = -10, 
+                max = 10),
+    
+    sliderInput("et", 
+                "Ecart type:", 
+                value = 0,
+                min = -10, 
+                max = 10),
+    
+    
     sliderInput("seed",
                 "Graine aleatoire",
                 value = 0,
@@ -57,7 +71,7 @@ server <- function(input, output) {
     req(input$mu, input$et, input$dist)
     mu = input$mu
     et = input$et
-    if (input$dist == "gauss") 
+    if (input$dist == "rnorm") 
       plot(curve(dnorm, mu - 5 * et, mu + 5 * et))
     # Ajouter ici l'affichage des donnees aleatoires
   })
